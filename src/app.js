@@ -12,8 +12,10 @@ app.get("/tasks", (req,res)=>{
     res.json([])
 })
 
+//  ||
 app.post("/tasks", (req, res)=>{
     const {title, description} = req.body
+    if (!title || !description) return res.status(400).json({message:"Bad Request"})
     res.json({
         title,
         description,
